@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Anitnegra Acilbuper Editores. Literatura, historia, filosofía, sociología y pensamiento.">
 <meta name="theme-color" content="#11100e">
-<title>Anitnegra Acilbuper Editores</title>
+<title>Anitnegra Acilbuper Editores · Libros y formatos</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
 
@@ -289,24 +289,28 @@ footer{background:#0b0a09;color:#aaa29a;padding:38px 0}
 .catalog-order-note{margin:-18px 0 24px;color:var(--muted);font-size:14px;letter-spacing:.02em}
 @media(max-width:540px){.catalog-order-note{margin:-10px 0 20px;font-size:13px;line-height:1.5}}
 </style>
+<link rel="stylesheet" href="css/shop.css">
 </head>
 <body>
 
 <header>
   <div class="container nav">
-    <a href="#inicio" aria-label="Anitnegra Acilbuper Editores"><img class="logo" src="assets/logo.png" alt="Anitnegra Acilbuper Editores"></a>
-    <button class="menu" aria-label="Abrir menú" aria-expanded="false" onclick="toggleMenu()">☰</button>
+    <a href="#inicio" aria-label="Anitnegra Acilbuper Editores"><img class="logo" src="assets/logo.png" alt="Anitnegra Acilbuper Editores" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'logo-text',textContent:'Anitnegra Acilbuper Editores'}))"></a>
     <nav id="nav">
       <ul>
         <li><a href="#catalogo">Catálogo</a></li>
-        <li><a href="#novedades">Novedades</a></li>
+        <li><a href="#formatos">Formatos</a></li>
+        <li><a href="atlas.html">Atlas</a></li>
         <li><a href="#autores">Autores</a></li>
         <li><a href="#editorial">Editorial</a></li>
         <li><a href="#servicios">Servicios</a></li>
-        <li></li>
         <li><a href="#contacto">Contacto</a></li>
       </ul>
     </nav>
+    <div class="nav-right">
+      <button class="cart-btn" id="cartBtn" aria-label="Abrir carrito"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="lbl">Carrito</span><span class="cart-count" hidden>0</span></button>
+      <button class="menu" aria-label="Abrir menú" aria-expanded="false" onclick="toggleMenu()">☰</button>
+    </div>
   </div>
 </header>
 
@@ -320,6 +324,7 @@ footer{background:#0b0a09;color:#aaa29a;padding:38px 0}
       <a class="btn gold" href="#catalogo">Entrar al catálogo</a>
       <a class="btn light" href="#editorial">Nuestra mirada</a>
     </div>
+    <div class="hero-stats" id="heroStats"></div>
   </div>
   <div class="hero-mark">Anitnegra Acilbuper · libros · pensamiento · memoria</div>
 </section>
@@ -328,7 +333,7 @@ footer{background:#0b0a09;color:#aaa29a;padding:38px 0}
   <div class="container">
     <div class="section-title reveal">
       <h2>Novedades</h2>
-      <p>Las incorporaciones más recientes al catálogo de Anitnegra Acilbuper, con especial atención a la nueva Biblioteca Gnóstica.</p>
+      <p>Las incorporaciones más recientes al catálogo de Anitnegra Acilbuper: la nueva Biblioteca Gnóstica y las obras que se suman al territorio de Santiago Profundo.</p>
     </div>
     <div class="feature reveal">
       <div class="feature-cover"><img src="assets/la-gnosis-de-los-meqabyan.jpg" alt="Portada de La Gnosis de los Meqabyan"></div>
@@ -337,23 +342,37 @@ footer{background:#0b0a09;color:#aaa29a;padding:38px 0}
         <h2>La Gnosis de los Meqabyan</h2>
         <p>Ensayo sobre las tradiciones esotéricas y bíblicas etíopes de los Meqabyan, el fuego espiritual, la perseverancia y la preservación del conocimiento gnóstico frente a persecuciones e historias antiguas.</p>
         <div class="feature-quote">«Lo que ardió y no se consumió.»</div>
-        <button class="btn" onclick="openBook('gnosis-meqabyan')">Ver ficha del libro</button>
+        <button class="btn" data-open="gnosis-meqabyan" tabindex="0">Ver ficha y formatos</button>
       </div>
     </div>
     <div class="news-grid reveal">
-      <article class="news-card" onclick="openBook('traicion-sagrada')">
+      <article class="news-card" data-open="traicion-sagrada" tabindex="0">
         <img src="assets/la-traicion-sagrada.png" alt="Portada de La Traición Sagrada">
         <div><span>Biblioteca Gnóstica · 2026</span><h3>La Traición Sagrada</h3><p>El Evangelio de Judas como gnosis y resistencia.</p></div>
       </article>
-      <article class="news-card" onclick="openBook('jubileos')">
+      <article class="news-card" data-open="jubileos" tabindex="0">
         <img src="assets/El_Libro_de_los_jubileos.png" alt="Portada de El Libro de los Jubileos">
         <div><span>Biblioteca Gnóstica · 2026</span><h3>El Libro de los Jubileos</h3><p>Narración poética íntegra inspirada en la versión etíope.</p></div>
       </article>
-      <article class="news-card" onclick="openBook('los-que-vigilaban')">
+      <article class="news-card" data-open="los-que-vigilaban" tabindex="0">
         <img src="assets/los-que-vigilaban.jpg" alt="Portada de Los que Vigilaban">
         <div><span>Biblioteca Gnóstica · 2026</span><h3>Los que Vigilaban</h3><p>Una narración fundada en el Libro de Enoch.</p></div>
       </article>
     </div>
+    <div class="nuevas reveal">
+      <h3>Nuevas incorporaciones</h3>
+      <div class="chips" id="newChips"></div>
+    </div>
+  </div>
+</section>
+
+<section id="colecciones">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2>Colecciones</h2>
+      <p>El catálogo se ordena en líneas editoriales. Elegí una para ver sus obras.</p>
+    </div>
+    <div class="collections reveal" id="collections"></div>
   </div>
 </section>
 
@@ -361,37 +380,40 @@ footer{background:#0b0a09;color:#aaa29a;padding:38px 0}
   <div class="container">
     <div class="section-title reveal">
       <h2>Catálogo</h2>
-      <p>Busque por título, autor o disciplina. El catálogo reúne narrativa, historia, sociología, filosofía y la Biblioteca Gnóstica, con ediciones digitales y enlaces de compra.</p>
+      <p>Busque por título, autor o colección. Cada obra puede adquirirse en distintos formatos: ebook, libro navegable y, próximamente, audiolibro y edición impresa.</p>
     </div>
-
-    <div class="catalog-tools reveal">
-      <div class="search"><input id="search" type="search" placeholder="Buscar en el catálogo…" aria-label="Buscar en el catálogo"></div>
-      <div class="filters" id="filters">
-        <button class="filter active" data-filter="Todos">Todos</button>
-        <button class="filter" data-filter="Sociología">Sociología</button>
-        <button class="filter" data-filter="Filosofía">Filosofía</button>
-        <button class="filter" data-filter="Historia">Historia</button>
-        <button class="filter" data-filter="Ciencias sociales">Ciencias sociales</button>
-        <button class="filter" data-filter="Narrativa">Narrativa</button>
-        <button class="filter" data-filter="Biblioteca Gnóstica">Biblioteca Gnóstica</button>
+    <div class="cat-tools reveal">
+      <div class="cat-row">
+        <div class="search"><input id="search" type="search" placeholder="Buscar por título, autor o tema…" aria-label="Buscar en el catálogo"></div>
+        <select id="selAuthor" aria-label="Filtrar por autor"></select>
+        <select id="selFormat" aria-label="Filtrar por formato"></select>
+        <select id="selSort" aria-label="Ordenar">
+          <option value="order">Orden del catálogo</option>
+          <option value="az">Título A–Z</option>
+          <option value="author">Autor</option>
+          <option value="price">Precio: menor a mayor</option>
+        </select>
       </div>
+      <div class="chips" id="chips" role="group" aria-label="Colecciones"></div>
+      <div class="cat-count" id="catCount" aria-live="polite"></div>
     </div>
-
     <div class="catalog" id="catalog"></div>
-
-    <div id="cover-note" style="margin-top:10px;color:var(--muted);font-size:12px;">Las portadas suministradas están incorporadas como imágenes reales, incluida <em>El Cerro y las Dos Serpientes</em>.</div>
-    <div id="digital-library-note" style="margin-top:28px;border-top:1px solid var(--line);padding-top:18px;color:var(--muted);font-size:12px;">Biblioteca digital · Las fichas con “Lectura digital” enlazan directamente a la edición web de cada obra.</div>
-    <div id="amazon-store" style="margin-top:38px;background:var(--black);color:#fff;padding:30px 34px;display:flex;align-items:center;justify-content:space-between;gap:25px;flex-wrap:wrap;">
-      <div>
-        <div class="kicker" style="color:#c9a66c">Tienda del autor</div>
-        <div style="font-family:Cormorant Garamond,Georgia,serif;font-size:32px;line-height:1.05;margin-top:6px;">Todos los libros disponibles en Amazon</div>
-      </div>
+    <div class="store-band">
+      <div><div class="kicker">Edición Kindle y papel</div><div class="t">También disponibles en la tienda del autor en Amazon</div></div>
       <a class="btn gold" href="https://www.amazon.com/stores/author/B0F9LKR4P5/allbooks?_encoding=UTF8&ref_=aufs_ap_ahdr_dsk_ab&ccs_id=b13940e7-952f-49e1-b8d2-03c133b6d672" target="_blank" rel="noopener noreferrer">Visitar tienda de Amazon ↗</a>
     </div>
   </div>
 </section>
 
-
+<section id="formatos" class="novedad">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2>Formatos</h2>
+      <p>Un mismo libro, distintas maneras de leerlo. Elegí el formato en la ficha de cada obra y sumalo al carrito.</p>
+    </div>
+    <div class="formats reveal" id="formats"></div>
+  </div>
+</section>
 
 <section id="autores">
   <div class="container">
@@ -399,39 +421,7 @@ footer{background:#0b0a09;color:#aaa29a;padding:38px 0}
       <h2>Autores</h2>
       <p>El autor como voz, investigador y creador. El catálogo crecerá alrededor de obras, no solo de nombres.</p>
     </div>
-    <div class="authors">
-      
-      <article class="author reveal">
-        <div class="initial">M</div>
-        <h3>Manuel Enrique Landsman</h3>
-        <p>Sociólogo · escritor · ensayista</p>
-        <p class="bio">Su obra se mueve entre la sociología, la filosofía, la historia y la narrativa. La ficción aparece como una forma de indagación y el ensayo como una herramienta para interrogar el presente.</p>
-      </article>
-      <article class="author reveal">
-        <div class="initial">C</div>
-        <h3>Celestina Paz</h3>
-        <p>Narrativa · ficción</p>
-        <p class="bio">Autora incorporada al catálogo de Anitnegra Acilbuper con obras de narrativa contemporánea y exploración de la experiencia humana.</p>
-      </article>
-      <article class="author reveal">
-        <div class="initial">J</div>
-        <h3>Jorge Gómez Lescano</h3>
-        <p>Narrativa · literatura</p>
-        <p class="bio">Autor incorporado al catálogo de la editorial, con una obra orientada a la narrativa y a la construcción de mundos literarios.</p>
-      </article>
-      <article class="author reveal">
-        <div class="initial">M</div>
-        <h3>Manuel Amenhotep</h3>
-        <p>Biblioteca Gnóstica · pensamiento espiritual</p>
-        <p class="bio">Autor de la serie Biblioteca Gnóstica, dedicada a tradiciones etíopes, textos apócrifos, literatura sacra y relecturas de la tradición gnóstica.</p>
-      </article>
-      <article class="author reveal">
-        <div class="initial">M</div>
-        <h3>María Ernestina Lazarte</h3>
-        <p>Narrativa · novela histórica</p>
-        <p class="bio">Autora incorporada al catálogo de Anitnegra Acilbuper Editores, con obras que exploran la memoria, el territorio y las comunidades de Santiago del Estero.</p>
-      </article>
-    </div>
+    <div class="authors" id="authors"></div>
   </div>
 </section>
 
@@ -466,6 +456,7 @@ footer{background:#0b0a09;color:#aaa29a;padding:38px 0}
       <article class="service reveal"><div class="num">04 · NAVEGABLE</div><h3>Libros navegables</h3><p>Generación de libros navegables a partir de cualquier texto, con índice interactivo y recorrido de lectura adaptado al formato digital.</p></article>
       <article class="service reveal"><div class="num">05 · AUDIO</div><h3>Audiolibros</h3><p>Generación de audiolibros a partir de cualquier texto, listos para distribución en plataformas de audio.</p></article>
     </div>
+    <div style="margin-top:34px"><a class="btn" href="https://anitnegra-ee.netlify.app/" target="_blank" rel="noopener">Conocé Anitnegra Estudio Editorial ↗</a></div>
   </div>
 </section>
 
@@ -493,176 +484,144 @@ footer{background:#0b0a09;color:#aaa29a;padding:38px 0}
   <div class="container footer">
     <div>© <span id="year"></span> Anitnegra Acilbuper Editores</div>
     <div>Santiago del Estero · Argentina · Libros · Pensamiento · Memoria</div>
-    <div class="footer-social"><a href="https://www.youtube.com/@AnitnegraAcilbuper" target="_blank" rel="noopener">YouTube</a> · <a href="https://www.facebook.com/profile.php?id=61594114825403" target="_blank" rel="noopener">Facebook</a></div>
+    <div class="footer-social"><a href="https://anitnegra-ee.netlify.app/" target="_blank" rel="noopener">Anitnegra Estudio Editorial</a> · <a href="https://www.youtube.com/@AnitnegraAcilbuper" target="_blank" rel="noopener">YouTube</a> · <a href="https://www.facebook.com/profile.php?id=61594114825403" target="_blank" rel="noopener">Facebook</a></div>
   </div>
 </footer>
 
-<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-  <div class="modal-box">
-    <button class="modal-close" onclick="closeBook()" aria-label="Cerrar">×</button>
-    <div class="modal-cover" id="modalCover"></div>
-    <div class="modal-body">
-      <div class="kicker">Ficha editorial</div>
-      <h2 id="modalTitle"></h2>
-      <div class="meta" id="modalMeta"></div>
-      <p id="modalDescription"></p>
-      <blockquote id="modalQuote"></blockquote>
-      <div class="modal-actions" id="modalActions"></div>
-    </div>
-  </div>
-</div>
-
 <div class="toast" id="toast" role="status"></div>
 
+<!-- Formularios estáticos para que Netlify detecte los campos (no se ven) -->
+<form name="pedido" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input name="bot-field"><input name="numero"><input name="nombre"><input name="email"><input name="pais"><input name="medio_pago"><input name="direccion"><input name="notas"><textarea name="pedido"></textarea><input name="total">
+</form>
+<form name="aviso-formato" data-netlify="true" hidden><input name="obra"><input name="formato"><input name="email"></form>
+
+<script src="js/config.js"></script>
+<script src="js/books.js"></script>
+<script src="js/shop.js"></script>
 <script>
-const BOOKS = [{"id":"promesa","title":"La Promesa de la Sociología en la Era de la Incertidumbre","short":"La Promesa de la Sociología","author":"Manuel Enrique Landsman","category":"Sociología","type":"Ensayo","year":"2025","status":"Disponible","cover":"assets/la-promesa-de-la-sociologia.png","description":"Ensayo de Manuel Enrique Landsman sobre la imaginación sociológica frente a la sociedad digital, la incertidumbre contemporánea y los desafíos de la justicia global. Una reflexión sobre cómo volver a comprender la vida social.","quote":"Comprender el presente exige recuperar la imaginación sociológica.","link":"https://amzn.eu/d/0632lVz8","publicationOrder":1},{"id":"banalizacion","title":"La Banalización de lo Sagrado","short":"La Banalización de lo Sagrado","author":"Manuel Enrique Landsman","category":"Filosofía","type":"Ensayo","year":"2025","status":"Disponible","cover":"assets/la-banalizacion-de-lo-sagrado.png","description":"Ensayo filosófico que examina la banalización de lo sagrado en la cultura contemporánea, la dictadura del like y el impacto de la inteligencia artificial, proponiendo recuperar profundidad, interioridad y resistencia crítica.","quote":"El alma no necesita optimización: necesita profundidad.","link":"https://a.co/d/02BedM09","publicationOrder":2},{"id":"lo-que-no-va","title":"Lo que no va a ninguna parte","short":"Lo que no va a ninguna parte","author":"Manuel Enrique Landsman","category":"Narrativa","type":"Novela","year":"2025","status":"Lectura digital · Amazon","cover":"assets/lo-que-no-va-a-ninguna-parte.png","description":"Novela ambientada en Quimilí en la que Evaristo Correa llega con una valija pequeña y una historia que no termina de convencerlo. El relato trabaja el desplazamiento, la incertidumbre y aquello que parece no tener destino.","quote":"Esto no empezó. Probablemente no termina. Es suficiente.","link":"https://lo-que-no-va-a-ninguna-parte-ebook.netlify.app/","publicationOrder":3,"amazonLink":"https://a.co/d/0dnd244d","digitalLink":"https://lo-que-no-va-a-ninguna-parte-ebook.netlify.app/"},{"id":"cerro","title":"El Cerro y las Dos Serpientes","short":"El Cerro y las Dos Serpientes","author":"Marta Esther Loto","category":"Historia","type":"Novela histórica","year":"2026","status":"Catálogo · Lectura digital","cover":"assets/cerro-serpientes.png","description":"Novela histórica ambientada en la Puna entre 1474 y 1662, donde territorio, memoria y conquista se entrecruzan. La obra reconstruye un mundo anterior a la conquista y las huellas que sobreviven después del silencio.","quote":"Historia. Tierra. Memoria.","link":"https://el-cerro-y-las-dos-serpientes.netlify.app/","publicationOrder":4},{"id":"esteco","title":"Esteco — Nuestra Señora de Talavera","short":"Esteco","author":"Manuel Enrique Landsman","category":"Historia","type":"Novela histórica","year":"2026","status":"Lectura digital","cover":"assets/esteco.png","description":"Novela histórica sobre Esteco, Nuestra Señora de Talavera, una ciudad fundada para perdurar en un territorio hostil. La obra explora la relación entre ciudad, tierra, memoria y destino en el pasado colonial.","quote":"Una ciudad fundada para perdurar. Una tierra que no perdona.","link":"https://esteco-ebook.netlify.app/","publicationOrder":5},{"id":"alimentacion","title":"La Evolución de la Alimentación Humana","short":"La Evolución de la Alimentación Humana","author":"Manuel Enrique Landsman","category":"Ciencias sociales","type":"Ensayo","year":"2026","status":"Edición ampliada","cover":"assets/la-evolucion-de-la-alimentacion-humana.png","description":"Ensayo que recorre la evolución de la alimentación humana desde los orígenes hasta la crisis planetaria, entendiendo lo que comemos como una historia de la cultura, la organización social y las formas de vida.","quote":"La historia de lo que comemos es, en el fondo, la historia de quiénes somos.","link":"https://la-evolucion-de-la-alimentacion.netlify.app/","publicationOrder":6},{"id":"hernando","title":"Hernando","short":"Hernando","author":"Manuel Enrique Landsman","category":"Historia","type":"Novela histórica","year":"2026","status":"Lectura digital","cover":"assets/hernando.png","description":"Esta novela histórica reconstruye la fundación de Salta en 1582 a través de un coro de voces que se enfrentan y se contradicen: el gobernador que confiesa desde su celda, la tierra que lo vio llegar, el obispo que lo denunció, las mujeres que habitaron sus márgenes. Entre autos judiciales y cartas al Rey, el relato indaga en la delgada línea que separa la ley de la justicia.","quote":"Una reflexión lúcida sobre la culpa, el olvido y lo que realmente perdura.","link":"https://hernando-ebook.netlify.app/","publicationOrder":7},{"id":"tierra-promision","title":"Tierra de Promisión","short":"Tierra de Promisión","author":"Manuel Enrique Landsman","category":"Narrativa","type":"Novela","year":"2026","status":"Lectura digital","cover":"assets/tierra-de-promision.png","description":"«Tierra de promisión» es una novela histórica ambientada en Santiago del Estero entre 1543 y 1600. A través de cuatro voces —un conquistador, un franciscano converso, un cacique tonocoté y una mestiza que encarna la memoria—, reconstruye las fundaciones, despojos y tensiones culturales sobre el Río Dulce (Misky-Mayu).","quote":"Nombre y dignidad a quienes la historia oficial pretendió olvidar.","link":"https://tierradepromision-ebook.netlify.app/","publicationOrder":8},{"id":"color-cosas","title":"El color de las cosas que duran","short":"El color de las cosas que duran","author":"Celestina Paz","category":"Narrativa","type":"Novela","year":"2026","status":"Lectura digital","cover":"assets/el-color-de-las-cosas-que-duran.png","description":"El color de las cosas que duran es una novela de misterio, memoria y poder ambientada en Kaypimi, un pueblo del monte santiagueño marcado por la desaparición y asesinato de Tobías Ávalos. Aniceto regresa para hacerse cargo del campo heredado de su padre y descubre que la tierra guarda secretos ligados a avionetas clandestinas, narcotráfico, silencios y pactos.","quote":"Una verdad que muchos prefieren mantener enterrada.","link":"https://el-color-de-las-cosas-que-duran.netlify.app/","publicationOrder":9},{"id":"meson","title":"El Mesón de Fierro","short":"El Mesón de Fierro","author":"Manuel Enrique Landsman","category":"Narrativa","type":"Novela","year":"2026","status":"Lectura digital","cover":"assets/el-meson-de-fierro.png","description":"El Mesón de Fierro reconstruye la expedición de 1783 al corazón del Gran Chaco en busca del legendario meteorito. Entre ciencia, ambición colonial, mitología indígena y aventura, la novela enfrenta a Miguel Froilán Rubín de Celis con Naapí y con un territorio que desafía sus certezas. El hallazgo y posterior entierro del hierro cósmico desencadenan una historia de culpa, obsesión y memoria que atraviesa siglos y llega hasta Francia.","quote":"¿Quién tiene derecho a poseer aquello que pertenece al cielo?","link":"https://el-meson-de-fierro.netlify.app/","publicationOrder":10},{"id":"hechiceras","title":"Las Hechiceras de Tuama","short":"Las Hechiceras de Tuama","author":"Romina Melisa Wagner","category":"Historia","type":"Novela histórica","year":"2026","status":"Lectura digital","cover":"assets/las-hechiceras-de-tuama.png","description":"Novela histórica sobre la tierra, el poder y las voces silenciadas, situada en Santiago del Estero en 1761. Las Hechiceras de Tuama recupera una trama de memoria y conflicto para interrogar aquello que la historia intentó borrar.","quote":"La tierra también guarda lo que los hombres intentaron borrar.","link":"https://las-hechiceras-de-tuama.netlify.app/","publicationOrder":11},{"id":"caballero","title":"El Caballero de la Orden de Santiago","short":"El Caballero de la Orden de Santiago","author":"Manuel Enrique Landsman","category":"Historia","type":"Novela histórica","year":"2026","status":"Lectura digital","cover":"assets/el-caballero-de-la-orden-de-santiago.png","description":"El Caballero de la Orden de Santiago reconstruye la vida de Juan Francisco Borges desde la mirada íntima de fray Anselmo de Rivadeneira, franciscano que lo bautizó, acompañó y asistió en sus últimos momentos. Desde sus viajes por el Alto Perú y Madrid hasta sus rebeliones y su fusilamiento en 1817, Borges aparece como un hombre atravesado por la tierra, la identidad y la libertad.","quote":"La memoria frente al poder.","link":"https://el-caballero-de-la-orden-de-santiago.netlify.app/","publicationOrder":12},{"id":"runauturunco","title":"Runauturunco","short":"Runauturunco","author":"Manuel Enrique Landsman","category":"Narrativa","type":"Novela","year":"2026","status":"Lectura digital","cover":"assets/runauturunco.png","description":"Novela de frontera, misterio y pensamiento ambientada en el Tucumán colonial entre 1698 y 1722. El jesuita Gaspar de Villareal investiga durante décadas el misterio del runauturunco, el hombre-tigre, y confronta distintas formas de comprender el mundo.","quote":"Una voz más dentro del territorio narrativo de la editorial.","link":"https://runauturunco-ebook.netlify.app/","publicationOrder":13},{"id":"escritorio","title":"El Escritorio de Piedra: Trece estratos desde el presente hasta el origen (Trilogía Mineral nº 3)","short":"El Escritorio de Piedra","author":"Manuel Enrique Landsman","category":"Narrativa","type":"Ensayo","year":"2026","status":"Amazon","cover":"assets/el-escritorio-de-piedra.png","description":"Ensayo de la Trilogía Mineral que propone trece estratos de lectura desde el presente hasta el origen. El Escritorio de Piedra continúa la exploración de la materia, el tiempo y la memoria mineral dentro del proyecto de Manuel Enrique Landsman.","quote":"Disponible a través de la tienda del autor en Amazon.","link":"https://www.amazon.com/s?k=El+Escritorio+de+Piedra+Manuel+Enrique+Landsman","publicationOrder":14},{"id":"abisinia","title":"El Libro que guardó Abisinia: Una lectura en capas de la Didascalia Etíope","short":"El Libro que guardó Abisinia","author":"Manuel Enrique Landsman","category":"Narrativa","type":"Ensayo","year":"2026","status":"Amazon","cover":"assets/el-libro-que-guardo-abisinia.png","description":"Ensayo que propone una lectura en capas de la Didascalia Etíope y de la tradición textual que conservó Abisinia. El libro explora memoria, transmisión y supervivencia de un conocimiento religioso a través de distintas épocas.","quote":"Disponible a través de la tienda del autor en Amazon.","link":"https://www.amazon.com/s?k=El+Libro+que+guardo+Abisinia+Manuel+Enrique+Landsman","publicationOrder":15},{"id":"golem","title":"El Gólem de Silicio: Una crónica de la materia pensante (Trilogía Mineral nº 2)","short":"El Gólem de Silicio","author":"Manuel Enrique Landsman","category":"Narrativa","type":"Narrativa","year":"2026","status":"Amazon","cover":"assets/el-golem-de-silicio.png","description":"Segunda entrega de la Trilogía Mineral, presentada como una crónica de la materia pensante. El Gólem de Silicio relaciona materia, pensamiento y tecnología dentro de la exploración narrativa y conceptual de Manuel Enrique Landsman.","quote":"Disponible a través de la tienda del autor en Amazon.","link":"https://www.amazon.com/s?k=El+Golem+de+Silicio+Manuel+Enrique+Landsman","publicationOrder":16},{"id":"arena","title":"La Arena que Recuerda: Cinco variaciones sobre la memoria mineral (Trilogía Mineral nº 1)","short":"La Arena que Recuerda","author":"Manuel Enrique Landsman","category":"Narrativa","type":"Narrativa","year":"2026","status":"Amazon · Lectura digital","cover":"assets/la-arena-que-recuerda.jpg","description":"Primera entrega de la Trilogía Mineral, compuesta por cinco variaciones sobre la memoria mineral. La Arena que Recuerda explora literariamente la relación entre materia, tiempo y memoria a través de una estructura de variaciones.","quote":"Disponible a través de la tienda del autor en Amazon.","link":"https://la-arena-que-recuerda.netlify.app/","publicationOrder":17,"amazonLink":"https://www.amazon.com/s?k=La+Arena+que+Recuerda+Manuel+Enrique+Landsman","digitalLink":"https://la-arena-que-recuerda.netlify.app/"},{"id":"gnosis-meqabyan","title":"La Gnosis de los Meqabyan: Lo que ardió y no se consumió","short":"La Gnosis de los Meqabyan","author":"Manuel Amenhotep","category":"Biblioteca Gnóstica","type":"Ensayo gnóstico","year":"2026","status":"Amazon","cover":"assets/la-gnosis-de-los-meqabyan.jpg","description":"Ensayo gnóstico dedicado a las tradiciones esotéricas y bíblicas etíopes de los Meqabyan. Explora el fuego espiritual, la perseverancia y la preservación del conocimiento gnóstico frente a persecuciones e historias antiguas.","quote":"Lo que ardió y no se consumió.","link":"https://www.amazon.com/s?k=La+Gnosis+de+los+Meqabyan+Manuel+Amenhotep","publicationOrder":18},{"id":"traicion-sagrada","title":"La Traición Sagrada: El Evangelio de Judas como gnosis y resistencia","short":"La Traición Sagrada","author":"Manuel Amenhotep","category":"Biblioteca Gnóstica","type":"Ensayo gnóstico","year":"2026","status":"Amazon","cover":"assets/la-traicion-sagrada.png","description":"Ensayo de la Biblioteca Gnóstica que aborda el Evangelio de Judas desde una lectura centrada en la gnosis y la resistencia, recuperando la figura de Judas como problema teológico, simbólico e histórico.","quote":"El Evangelio de Judas como gnosis y resistencia.","link":"https://www.amazon.com/s?k=La+Traicion+Sagrada+Manuel+Amenhotep","publicationOrder":19},{"id":"evangelio-tomas","title":"El Evangelio de Tomás. Edición Temática Comentada","short":"El Evangelio de Tomás","author":"Manuel Amenhotep","category":"Biblioteca Gnóstica","type":"Edición comentada","year":"2026","status":"Amazon","cover":"assets/evangelio-de-tomas.jpg","description":"Edición temática comentada del Evangelio de Tomás basada en el Códice II de Nag Hammadi. Organiza y comenta sus 114 dichos atribuidos a Jesús, con atención al autoconocimiento, el Reino Interior y su relación con el canon tradicional.","quote":"Autoconocimiento y Reino Interior.","link":"https://www.amazon.com/s?k=El+Evangelio+de+Tom%C3%A1s+Edici%C3%B3n+Tem%C3%A1tica+Comentada+Manuel+Amenhotep","publicationOrder":20},{"id":"los-que-vigilaban","title":"LOS QUE VIGILABAN: Narración fundada en el Libro de Enoch","short":"Los que Vigilaban","author":"Manuel Amenhotep","category":"Biblioteca Gnóstica","type":"Narrativa gnóstica","year":"2026","status":"Amazon","cover":"assets/los-que-vigilaban.jpg","description":"Narración fundada en la tradición bíblica de los Vigilantes o Egrégoroi y acompañada por un anexo documental y conceptual. El libro aborda su origen, historia y simbolismo a partir del universo del Libro de Enoch.","quote":"Los Vigilantes descendieron. La memoria permaneció.","link":"https://www.amazon.com/s?k=LOS+QUE+VIGILABAN+Manuel+Amenhotep","publicationOrder":21},{"id":"testamento","title":"TESTAMENTO: Poema sacro en tres voces a partir del Testamentum Domini","short":"TESTAMENTO","author":"Manuel Amenhotep","category":"Biblioteca Gnóstica","type":"Poema sacro","year":"2026","status":"Amazon","cover":"assets/CARATULA-testamento.jpg","description":"Poema sacro en tres voces inspirado en el Testamentum Domini. La obra adopta una estructura poético-litúrgica para explorar instrucciones místicas, visiones del fin de los tiempos y ordenanzas espirituales del cristianismo primitivo.","quote":"Tres voces para una memoria sagrada.","link":"https://www.amazon.com/s?k=TESTAMENTO+Poema+sacro+Manuel+Amenhotep","publicationOrder":22},{"id":"jubileos","title":"El Libro de los Jubileos: Narración poética íntegra de la versión etíope","short":"El Libro de los Jubileos","author":"Manuel Amenhotep","category":"Biblioteca Gnóstica","type":"Narración poética","year":"2026","status":"Amazon","cover":"assets/El_Libro_de_los_jubileos.png","description":"Narración poética íntegra inspirada en la versión ge’ez del antiguo Libro de los Jubileos. Reinterpreta la creación, los calendarios sagrados y las revelaciones transmitidas a Moisés por el Ángel de la Presencia.","quote":"Creación, calendario y revelación.","link":"https://www.amazon.com/s?k=El+Libro+de+los+Jubileos+Manuel+Amenhotep","publicationOrder":23},{"id":"ciudad-perdio-cielo","title":"La Ciudad que Perdió su Cielo","short":"La Ciudad que Perdió su Cielo","author":"Manuel Enrique Landsman","category":"Historia","type":"Novela histórica","year":"2026","status":"Lectura digital","cover":"assets/La_Ciudad_que_Perdio_su_Cielo.png","description":"Rodrigo de Masumpa reconstruye la Santiago del Estero colonial entre 1585 y 1637. Su mirada atraviesa indígenas, africanos, europeos, jesuitas, evangelización y conflictos de poder. La novela recupera las voces que la historia institucional dejó en los márgenes.","quote":"Una ciudad transformada por la conquista y la religión.","link":"https://la-ciudad-que-perdio-su-cielo.netlify.app/","publicationOrder":24},{"id":"funcionario","title":"El Funcionario","short":"El Funcionario","author":"Jorge Gómez Lescano","category":"Narrativa","type":"Novela","year":"2026","status":"Lectura digital","cover":"assets/el-funcionario.png","description":"En El Funcionario, Pedro León Díaz Gallo, sacerdote, funcionario y firmante de la Independencia, reconstruye desde su lecho de muerte una vida al servicio del poder. Entre Ibarra, la Iglesia y las luchas políticas de Santiago del Estero, la novela explora la lealtad, la culpa y el silencio de quien convirtió la administración en forma de supervivencia.","quote":"Una confesión histórica sobre el poder y sus deudas.","link":"https://el-funcionario.netlify.app/","publicationOrder":25},{"id":"infernales","title":"Las Infernales","short":"Las Infernales","author":"Celestina Paz","category":"Historia","type":"Novela histórica","year":"2026","status":"Lectura digital","cover":"assets/las-infernales.png","description":"Las Infernales es una novela histórica coral que recupera la participación decisiva de las mujeres en las guerras de la Independencia, especialmente en torno a Martín Güemes y la Salta revolucionaria. A través de testimonios, memorias y partes de guerra, la novela reconstruye las vidas de Macacha Güemes, Carmen Puch, Juana Azurduy y otras mujeres que combatieron, organizaron, asistieron y sostuvieron la resistencia, sin dejar de lado a aquellas cuyos nombres quedaron perdidos.","quote":"La guerra no fue solamente una empresa de hombres.","link":"https://las-infernales.netlify.app/","publicationOrder":26},{"id":"ciudad-cesares","title":"La Ciudad de los Césares: Jerónimo Luis de Cabrera, 1573","short":"La Ciudad de los Césares","author":"Jorge Gómez Lescano","category":"Historia","type":"Novela histórica","year":"2026","status":"Lectura digital","cover":"assets/ciudad-de-los-cesares.png","description":"La fundación territorial de 1573 es reconstruida mediante cinco voces que observan el acontecimiento desde perspectivas diferentes. Jerónimo Luis de Cabrera es el eje de una novela donde exploración, ambición y poblaciones originarias cuestionan la versión lineal de la historia.","quote":"Cinco voces, un valle, y una ciudad que nadie encontró nunca.","link":"https://ciudad-de-los-cesares.netlify.app/","publicationOrder":27},{"id":"luz-caida","title":"La Luz Caída: Comentario e interpretación de la Pistis Sophia","short":"La Luz Caída","author":"Manuel Amenhotep","category":"Biblioteca Gnóstica","type":"Ensayo","year":"2026","status":"Lectura digital","cover":"assets/la_luz-caida.jpeg","description":"Lectura interpretativa de la Pistis Sophia centrada en la caída y recuperación de Sofía, los eones, los arcontes, el demiurgo y el papel de María Magdalena. La caída, el arrepentimiento y la revelación aparecen como movimientos de una dramaturgia del conocimiento.","quote":"La caída y la revelación como una misma dramaturgia.","link":"https://la-luz-caida.netlify.app/","publicationOrder":28},{"id":"milton","title":"Milton, el poeta de la caída","short":"Milton, el poeta de la caída","author":"Manuel Amenhotep","category":"Filosofía","type":"Ensayo","year":"2026","status":"Lectura digital","cover":"assets/milton.png","description":"Milton: El poeta de la caída ofrece un estudio amplio y ambicioso de John Milton y Paradise Lost, abordando su vida, formación, pensamiento religioso, filosofía, actividad política y recepción literaria. La obra interpreta el poema como síntesis de las experiencias de Milton: la defensa de la libertad, la derrota republicana, la ceguera y la tensión entre libre albedrío, caída y providencia. Su recorrido conecta fuentes clásicas, bíblicas y filosóficas con debates modernos.","quote":"Por qué Paradise Lost sigue interpelando al lector contemporáneo.","link":"https://milton-el-poeta-de-la-caida.netlify.app/","publicationOrder":29},{"id":"agua-sin-nombre","title":"El Agua y lo que no tiene Nombre","short":"El Agua y lo que no tiene Nombre","author":"María Ernestina Lazarte","category":"Narrativa","type":"Novela","year":"2026","status":"Lectura digital","cover":"assets/el-agua-y-lo-que.png","description":"En Villa Atamisqui, el regreso de Lucía reabre viejos vínculos y modifica el equilibrio de una comunidad acostumbrada a conocerse y vigilarse mutuamente. El agua, el quichua, la memoria y los afectos atraviesan la historia.","quote":"El agua, el quichua y la memoria de un pueblo.","link":"https://el-agua-y-lo-que-no-tiene-nombre.netlify.app/","publicationOrder":30},{"id":"padron-mathala","title":"El Padrón de Mathala","short":"El Padrón de Mathala","author":"María Ernestina Lazarte","category":"Historia","type":"Novela histórica","year":"2026","status":"Lectura digital","cover":"assets/el-padron-de-mathala.png","description":"Novela histórica sobre la formación de una comunidad indígena en Santiago del Estero y sobre cómo el poder colonial convierte personas en categorías administrativas. El padrón se convierte en narrador metaficcional que contrapone el registro burocrático con las vidas que no puede contener.","quote":"El padrón no puede contener las vidas que registra.","link":"https://el-padron-de-mathala.netlify.app/","publicationOrder":31}];
+const $ = s => document.querySelector(s);
+const esc = Shop.esc;
+const REAL = BOOKS.filter(b => !b.draft);
+const AUTHORS = [...new Set(BOOKS.map(b => b.author).filter(a => a !== 'Por confirmar'))];
+const state = { q: '', coll: 'Todos', author: 'Todos', fmt: 'Todos', sort: 'order' };
+const norm = s => String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 
-const catalog = document.getElementById('catalog');
-const search = document.getElementById('search');
-let activeFilter = 'Todos';
+/* ---- Hero ---- */
+$('#heroStats').innerHTML = [[REAL.length, 'obras'], [AUTHORS.length, 'autores'], [COLLECTIONS.length, 'colecciones']]
+  .map(([n, l]) => '<div><b>' + n + '</b>' + l + '</div>').join('');
 
-function coverMarkup(book, small=false) {
-  if(book.cover.startsWith('assets/') || book.cover.startsWith('http')) {
-    return `<img src="${book.cover}" alt="Portada de ${escapeHtml(book.title)}">`;
-  }
-  if(book.cover === 'typographic-gnostic') { return `<div class="cover typographic-gnostic"><div class="cover-meta">Biblioteca Gnóstica · ${escapeHtml(book.type)}</div><div class="cover-title">${escapeHtml(book.short)}</div><div class="cover-author">${escapeHtml(book.author)}</div></div>`; }
-  const food = book.id === 'alimentacion' ? ' food' : '';
-  const cerro = book.id === 'cerro' ? ' cerro' : '';
-  return `<div class="cover typographic${food}${cerro}">
-    <div class="cover-meta">${book.type} · ${book.category}</div>
-    <div class="cover-title">${escapeHtml(book.short)}</div>
-    <div class="cover-author">${escapeHtml(book.author)}</div>
-  </div>`;
+/* ---- Nuevas incorporaciones ---- */
+$('#newChips').innerHTML = BOOKS.filter(b => b.isNew).map(b =>
+  '<button class="chip" data-open="' + esc(b.id) + '">' + esc(b.short) + '</button>').join('');
+
+/* ---- Colecciones ---- */
+$('#collections').innerHTML = COLLECTIONS.map(c => {
+  const n = BOOKS.filter(b => b.collection === c.name).length;
+  return '<button class="coll" data-coll="' + esc(c.name) + '"><div><div class="n">' + n + (n === 1 ? ' obra' : ' obras') + '</div><h3>' + esc(c.name) + '</h3></div><p>' + esc(c.blurb) + '</p></button>';
+}).join('');
+
+/* ---- Formatos ---- */
+$('#formats').innerHTML = Object.entries(SHOP.formats).map(([k, f], i) => {
+  const avail = BOOKS.some(b => Shop.status(b, k) === 'available');
+  return '<article class="format' + (avail ? '' : ' is-soon') + '"><div class="num">0' + (i + 1) + '</div><h3>' + esc(f.label) + '</h3><p>' + esc(f.detail) + '</p>' +
+    (avail ? '<div class="from">Desde <b>' + Shop.money(f.price) + '</b></div>' : '<span class="soon-tag">Próximamente</span>') + '</article>';
+}).join('');
+
+/* ---- Autores ---- */
+$('#authors').innerHTML = AUTHORS.map(name => {
+  const works = BOOKS.filter(b => b.author === name);
+  const meta = AUTHOR_BIOS[name] || {
+    role: [...new Set(works.map(w => w.type))].join(' · '),
+    bio: 'En el catálogo con ' + works.map(w => '«' + w.short + '»').join(', ') + '.'
+  };
+  return '<article class="author reveal visible"><div class="initial">' + esc(name[0]) + '</div><h3>' + esc(name) + '</h3><p>' + esc(meta.role) + '</p><p class="bio">' + esc(meta.bio) + '</p>' +
+    '<button class="more" data-author="' + esc(name) + '">' + works.length + (works.length === 1 ? ' obra' : ' obras') + ' en el catálogo →</button></article>';
+}).join('');
+
+/* ---- Filtros ---- */
+const availableFormats = Object.keys(SHOP.formats).filter(k => BOOKS.some(b => Shop.status(b, k) === 'available'));
+$('#selAuthor').innerHTML = '<option value="Todos">Todos los autores</option>' + AUTHORS.map(a => '<option>' + esc(a) + '</option>').join('');
+$('#selFormat').innerHTML = '<option value="Todos">Todos los formatos</option>' + availableFormats.map(k => '<option value="' + k + '">' + esc(SHOP.formats[k].label) + '</option>').join('');
+
+function renderChips() {
+  const items = [['Todos', BOOKS.length], ['Novedades', BOOKS.filter(b => b.isNew).length], ...COLLECTIONS.map(c => [c.name, BOOKS.filter(b => b.collection === c.name).length])];
+  $('#chips').innerHTML = items.map(([n, c]) =>
+    '<button class="chip' + (state.coll === n ? ' active' : '') + '" data-chip="' + esc(n) + '">' + esc(n) + '<i>' + c + '</i></button>').join('');
 }
 
-function escapeHtml(s) {
-  return String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
-}
-
-function renderCatalog() {
-  const q = search.value.trim().toLowerCase();
-  const visible = BOOKS.filter(book => {
-    const matchesFilter = activeFilter === 'Todos' || book.category === activeFilter;
-    const haystack = `${book.title} ${book.author} ${book.category} ${book.type}`.toLowerCase();
-    return matchesFilter && haystack.includes(q);
+function visible() {
+  const q = norm(state.q.trim());
+  let list = BOOKS.filter(b => {
+    if (state.coll === 'Novedades' ? !b.isNew : (state.coll !== 'Todos' && b.collection !== state.coll)) return false;
+    if (state.author !== 'Todos' && b.author !== state.author) return false;
+    if (state.fmt !== 'Todos' && Shop.status(b, state.fmt) !== 'available') return false;
+    return !q || norm([b.title, b.author, b.collection, b.type, b.category, b.description].join(' ')).includes(q);
   });
-
-  catalog.innerHTML = visible.map(book => `
-    <article class="book reveal visible" onclick="openBook('${book.id}')">
-      <div class="cover">${coverMarkup(book)}</div>
-      <small>${book.type} · ${book.category}</small>
-      <h3>${escapeHtml(book.short)}</h3>
-      <p>${escapeHtml(book.description)}</p>
-      <div class="book-foot"><span>${book.year}</span><strong>${book.status}</strong></div>
-    </article>
-  `).join('');
-
-  if(!visible.length) catalog.innerHTML = '<p style="grid-column:1/-1;color:var(--muted)">No encontramos obras con esos criterios.</p>';
+  const cmp = {
+    order: (a, b) => a.order - b.order,
+    az: (a, b) => a.title.localeCompare(b.title, 'es'),
+    author: (a, b) => a.author.localeCompare(b.author, 'es') || a.order - b.order,
+    price: (a, b) => (Shop.fromPrice(a) ?? 1e9) - (Shop.fromPrice(b) ?? 1e9) || a.order - b.order
+  }[state.sort];
+  return list.sort(cmp);
 }
 
-document.querySelectorAll('.filter').forEach(btn => btn.addEventListener('click', () => {
-  document.querySelectorAll('.filter').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  activeFilter = btn.dataset.filter;
-  renderCatalog();
-}));
-
-function renderAmazonCatalog() {
-  const target = document.getElementById('amazonCatalog');
-  if(!target) return;
-  const unique = new Map();
-  BOOKS.filter(b => b.amazon).forEach(book => {
-    const key = book.title.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'');
-    if(!unique.has(key)) unique.set(key, book);
-  });
-  const amazonBooks = Array.from(unique.values());
-  target.innerHTML = amazonBooks.map(book => `
-    <article class="book reveal visible" onclick="openBook('${book.id}')">
-      <div class="cover">${coverMarkup(book)}</div>
-      <small>${escapeHtml(book.type)} · Amazon · ${escapeHtml(book.author)}</small>
-      <h3>${escapeHtml(book.short)}</h3>
-      <p>${escapeHtml(book.description)}</p>
-      <div class="book-foot"><span>${escapeHtml(book.year)}</span><strong>Ver en Amazon ↗</strong></div>
-    </article>`).join('');
+function card(b) {
+  const from = Shop.fromPrice(b);
+  const foot = b.draft
+    ? '<span class="price"><small>Ficha</small>en preparación</span><button class="add-btn" data-open="' + esc(b.id) + '">Ver</button>'
+    : '<span class="price"><small>Desde</small>' + (from != null ? Shop.money(from) : '—') + '</span><button class="add-btn" data-add="' + esc(b.id) + '" aria-label="Agregar ' + esc(b.short) + ' al carrito">+ Ebook</button>';
+  return '<article class="book reveal visible" data-open="' + esc(b.id) + '" tabindex="0">' +
+    '<div class="cover">' + (b.isNew ? '<span class="badge-new">Nuevo</span>' : '') + Shop.cover(b) + '</div>' +
+    '<small>' + esc(b.type) + ' · ' + esc(b.collection) + '</small><h3>' + esc(b.short) + '</h3>' +
+    (b.author !== 'Por confirmar' ? '<div class="book-author">' + esc(b.author) + '</div>' : '') +
+    '<p class="book-desc">' + esc(b.description || 'Ficha en preparación.') + '</p>' +
+    '<div class="fmt-chips">' + Shop.chips(b) + '</div><div class="book-foot">' + foot + '</div></article>';
 }
 
-renderCatalog();
-renderAmazonCatalog();
-search.addEventListener('input', renderCatalog);
-
-function openBook(id) {
-  const book = BOOKS.find(b => b.id === id);
-  if(!book) return;
-  const modal = document.getElementById('modal');
-  const cover = document.getElementById('modalCover');
-
-  cover.innerHTML = (book.cover.startsWith('assets/') || book.cover.startsWith('http'))
-    ? `<img src="${book.cover}" alt="Portada de ${escapeHtml(book.title)}">`
-    : coverMarkup(book);
-
-  document.getElementById('modalTitle').textContent = book.title;
-  document.getElementById('modalMeta').textContent = `${book.author} · ${book.type} · ${book.category} · ${book.year}`;
-  document.getElementById('modalDescription').textContent = book.description;
-  document.getElementById('modalQuote').textContent = book.quote;
-
-  const actions = document.getElementById('modalActions');
-  const actionLinks = [];
-  if(book.digitalLink) actionLinks.push(`<a href="${book.digitalLink}" target="_blank" rel="noopener">Lectura digital ↗</a>`);
-  else if(book.link && book.link !== '#') actionLinks.push(`<a href="${book.link}" target="_blank" rel="noopener">Acceder a la obra ↗</a>`);
-  if(book.amazonLink) actionLinks.push(`<a href="${book.amazonLink}" target="_blank" rel="noopener">Ver en Amazon ↗</a>`);
-  actions.innerHTML = actionLinks.length ? actionLinks.join('') : `<span style="font-size:10px;color:var(--muted)">Enlace pendiente</span>`;
-
-  modal.classList.add('open');
-  document.body.classList.add('lock');
+function render() {
+  const list = visible();
+  $('#catalog').innerHTML = list.length ? list.map(card).join('') : '<p class="empty">No encontramos obras con esos criterios.</p>';
+  $('#catCount').textContent = list.length + (list.length === 1 ? ' obra' : ' obras');
+  renderChips();
 }
 
-function closeBook() {
-  document.getElementById('modal').classList.remove('open');
-  document.body.classList.remove('lock');
+function setFilters(patch, scroll) {
+  Object.assign(state, patch);
+  $('#search').value = state.q; $('#selAuthor').value = state.author; $('#selFormat').value = state.fmt; $('#selSort').value = state.sort;
+  render();
+  if (scroll) document.getElementById('catalogo').scrollIntoView({ behavior: 'smooth' });
 }
-document.getElementById('modal').addEventListener('click', e => { if(e.target.id === 'modal') closeBook(); });
-document.addEventListener('keydown', e => { if(e.key === 'Escape') closeBook(); });
 
+$('#search').addEventListener('input', e => setFilters({ q: e.target.value }));
+$('#selAuthor').addEventListener('change', e => setFilters({ author: e.target.value }));
+$('#selFormat').addEventListener('change', e => setFilters({ fmt: e.target.value }));
+$('#selSort').addEventListener('change', e => setFilters({ sort: e.target.value }));
+document.addEventListener('click', e => {
+  const c = e.target.closest('[data-chip]'); if (c) return setFilters({ coll: c.dataset.chip });
+  const k = e.target.closest('[data-coll]'); if (k) return setFilters({ coll: k.dataset.coll, author: 'Todos', fmt: 'Todos', q: '' }, true);
+  const a = e.target.closest('[data-author]'); if (a) return setFilters({ author: a.dataset.author, coll: 'Todos', fmt: 'Todos', q: '' }, true);
+});
+render();
+
+/* ---- Navegación, animaciones, formulario ---- */
 function toggleMenu() {
-  const nav = document.getElementById('nav');
-  const button = document.querySelector('.menu');
-  const open = nav.classList.toggle('open');
-  button.setAttribute('aria-expanded', String(open));
+  const nav = $('#nav'), btn = $('.menu');
+  btn.setAttribute('aria-expanded', String(nav.classList.toggle('open')));
 }
-document.querySelectorAll('nav a').forEach(a => a.addEventListener('click', () => document.getElementById('nav').classList.remove('open')));
-
-const io = new IntersectionObserver(entries => entries.forEach(e => {
-  if(e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
-}), {threshold:.08});
-document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-document.getElementById('year').textContent = new Date().getFullYear();
+document.querySelectorAll('nav a').forEach(a => a.addEventListener('click', () => $('#nav').classList.remove('open')));
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } }), { threshold: .08 });
+document.querySelectorAll('.reveal:not(.visible)').forEach(el => io.observe(el));
+$('#year').textContent = new Date().getFullYear();
 
 function sendForm(e) {
   e.preventDefault();
   const form = e.target;
-  const toast = document.getElementById('toast');
-  const data = new FormData(form);
-
-  fetch('/', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: new URLSearchParams(data).toString()
-  })
-    .then(() => {
-      toast.textContent = '¡Gracias! Tu mensaje fue enviado correctamente.';
-      toast.classList.add('show');
-      setTimeout(() => toast.classList.remove('show'), 4500);
-      form.reset();
-    })
-    .catch(() => {
-      toast.textContent = 'No pudimos enviar el mensaje. Probá de nuevo en unos minutos o escribinos a acilbuper@gmail.com.';
-      toast.classList.add('show');
-      setTimeout(() => toast.classList.remove('show'), 6000);
-    });
+  fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(new FormData(form)).toString() })
+    .then(r => { if (!r.ok) throw 0; Shop.toast('¡Gracias! Tu mensaje fue enviado correctamente.', 4500); form.reset(); })
+    .catch(() => Shop.toast('No pudimos enviar el mensaje. Probá de nuevo en unos minutos o escribinos a acilbuper@gmail.com.', 6000));
 }
-
-renderCatalog();
 </script>
 </body>
 </html>
