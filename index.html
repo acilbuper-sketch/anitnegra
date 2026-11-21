@@ -333,34 +333,12 @@ footer{background:#0b0a09;color:#aaa29a;padding:38px 0}
   <div class="container">
     <div class="section-title reveal">
       <h2>Novedades</h2>
-      <p>Las incorporaciones más recientes al catálogo de Anitnegra Acilbuper: la nueva Biblioteca Gnóstica y las obras que se suman al territorio de Santiago Profundo.</p>
+      <p>Las últimas obras incorporadas al catálogo de Anitnegra Acilbuper.</p>
     </div>
-    <div class="feature reveal">
-      <div class="feature-cover"><img src="assets/la-gnosis-de-los-meqabyan.jpg" alt="Portada de La Gnosis de los Meqabyan"></div>
-      <div class="feature-copy">
-        <div class="kicker">Nueva incorporación · Biblioteca Gnóstica</div>
-        <h2>La Gnosis de los Meqabyan</h2>
-        <p>Ensayo sobre las tradiciones esotéricas y bíblicas etíopes de los Meqabyan, el fuego espiritual, la perseverancia y la preservación del conocimiento gnóstico frente a persecuciones e historias antiguas.</p>
-        <div class="feature-quote">«Lo que ardió y no se consumió.»</div>
-        <button class="btn" data-open="gnosis-meqabyan" tabindex="0">Ver ficha y formatos</button>
-      </div>
-    </div>
-    <div class="news-grid reveal">
-      <article class="news-card" data-open="traicion-sagrada" tabindex="0">
-        <img src="assets/la-traicion-sagrada.png" alt="Portada de La Traición Sagrada">
-        <div><span>Biblioteca Gnóstica · 2026</span><h3>La Traición Sagrada</h3><p>El Evangelio de Judas como gnosis y resistencia.</p></div>
-      </article>
-      <article class="news-card" data-open="jubileos" tabindex="0">
-        <img src="assets/El_Libro_de_los_jubileos.png" alt="Portada de El Libro de los Jubileos">
-        <div><span>Biblioteca Gnóstica · 2026</span><h3>El Libro de los Jubileos</h3><p>Narración poética íntegra inspirada en la versión etíope.</p></div>
-      </article>
-      <article class="news-card" data-open="los-que-vigilaban" tabindex="0">
-        <img src="assets/los-que-vigilaban.jpg" alt="Portada de Los que Vigilaban">
-        <div><span>Biblioteca Gnóstica · 2026</span><h3>Los que Vigilaban</h3><p>Una narración fundada en el Libro de Enoch.</p></div>
-      </article>
-    </div>
+    <div class="feature reveal" id="featureNew"></div>
+    <div class="news-grid reveal" id="newsGrid"></div>
     <div class="nuevas reveal">
-      <h3>Nuevas incorporaciones</h3>
+      <h3>Otras incorporaciones recientes</h3>
       <div class="chips" id="newChips"></div>
     </div>
   </div>
@@ -439,6 +417,10 @@ footer{background:#0b0a09;color:#aaa29a;padding:38px 0}
         <div class="pillar"><b>Pensamiento</b><p>Hacer lugar a las preguntas difíciles.</p></div>
         <div class="pillar"><b>Futuro</b><p>Publicar para intervenir en el presente.</p></div>
       </div>
+      <div class="director">
+        <div class="director-photo"><span>ML</span><img src="assets/director.jpg" alt="Manuel Enrique Landsman, director" onerror="this.remove()"></div>
+        <div><div class="role">Director</div><h3>Manuel Enrique Landsman</h3></div>
+      </div>
     </div>
   </div>
 </section>
@@ -511,9 +493,18 @@ const norm = s => String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u03
 $('#heroStats').innerHTML = [[REAL.length, 'obras'], [AUTHORS.length, 'autores'], [COLLECTIONS.length, 'colecciones']]
   .map(([n, l]) => '<div><b>' + n + '</b>' + l + '</div>').join('');
 
-/* ---- Nuevas incorporaciones ---- */
-$('#newChips').innerHTML = BOOKS.filter(b => b.isNew).map(b =>
-  '<button class="chip" data-open="' + esc(b.id) + '">' + esc(b.short) + '</button>').join('');
+/* ---- Novedades: las últimas incorporadas (orden de carga) ---- */
+const LATEST = BOOKS.filter(b => b.isNew).sort((a, b) => b.order - a.order);
+const short = (t, n) => { t = (t || '').trim(); const f = t.split(/(?<=[.?!])\s/)[0] || t; return esc(f.length > n ? f.slice(0, n).replace(/\s\S*$/, '') + '…' : f); };
+if (LATEST[0]) {
+  const f = LATEST[0];
+  $('#featureNew').innerHTML = '<div class="feature-cover">' + Shop.cover(f) + '</div><div class="feature-copy"><div class="kicker">Última incorporación · ' + esc(f.collection) + '</div><h2>' + esc(f.short) + '</h2>' +
+    (f.author !== 'Por confirmar' ? '<p style="margin-top:12px"><b>' + esc(f.author) + '</b> · ' + esc(f.type) + '</p>' : '') +
+    '<p>' + esc(f.description) + '</p>' + (f.quote ? '<div class="feature-quote">«' + esc(f.quote) + '»</div>' : '') +
+    '<button class="btn" style="margin-top:24px" data-open="' + esc(f.id) + '">Ver ficha y formatos</button></div>';
+}
+$('#newsGrid').innerHTML = LATEST.slice(1, 4).map(b => '<article class="news-card" data-open="' + esc(b.id) + '" tabindex="0"><div class="nc">' + Shop.cover(b) + '</div><div><span>' + esc(b.collection) + ' · ' + esc(b.year) + '</span><h3>' + esc(b.short) + '</h3><p>' + short(b.description, 90) + '</p></div></article>').join('');
+$('#newChips').innerHTML = LATEST.slice(4).map(b => '<button class="chip" data-open="' + esc(b.id) + '">' + esc(b.short) + '</button>').join('');
 
 /* ---- Colecciones ---- */
 $('#collections').innerHTML = COLLECTIONS.map(c => {
@@ -535,7 +526,7 @@ $('#authors').innerHTML = AUTHORS.map(name => {
     role: [...new Set(works.map(w => w.type))].join(' · '),
     bio: 'En el catálogo con ' + works.map(w => '«' + w.short + '»').join(', ') + '.'
   };
-  return '<article class="author reveal visible"><div class="initial">' + esc(name[0]) + '</div><h3>' + esc(name) + '</h3><p>' + esc(meta.role) + '</p><p class="bio">' + esc(meta.bio) + '</p>' +
+  return '<article class="author reveal visible"><div class="initial">' + esc(name[0]) + '</div><h3>' + esc(name) + '</h3><p>' + esc(meta.role) + '</p><p class="bio">' + esc(meta.bio) + '</p>' + (meta.full ? '<details class="bio-full"><summary>Biografía completa</summary><p>' + esc(meta.full) + '</p></details>' : '') +
     '<button class="more" data-author="' + esc(name) + '">' + works.length + (works.length === 1 ? ' obra' : ' obras') + ' en el catálogo →</button></article>';
 }).join('');
 
