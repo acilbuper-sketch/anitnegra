@@ -241,3 +241,11 @@ body.lock{overflow:hidden}
 @media(max-width:540px){.news-card .nc{width:78px}.news-card .nc .tc-title{font-size:12px}}
 @media(max-width:360px){.news-card .nc{width:68px}}
 .news-card .nc .tc-title,.cd-thumb .tc-title{margin:auto 0}
+.director .dbio{font-size:13px;color:#a9a299;margin-top:10px;max-width:420px;line-height:1.55}
+
+/* Botón visible para la biografía completa */
+.bio-full summary{border:1px solid var(--red);padding:8px 12px;font-size:10px}
+.bio-full summary:hover{background:var(--red);color:#fff}
+.bio-full[open] summary{background:var(--ink);border-color:var(--ink);color:#fff}
+.bio-full summary:after{content:" +"}
+.bio-full[open] summary:after{content:" –"}
